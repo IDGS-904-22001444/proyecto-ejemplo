@@ -1,0 +1,20 @@
+pipeline {
+    // Agente: Ejecuta el pipeline en cualquier agente disponible
+    agent any
+
+    // Define los parámetros que este pipeline puede recibir
+    parameters {
+        // Parámetro de tipo string llamado 'MENSAJE'
+        // Con un valor por defecto vacío y una descripción
+        string(name: 'MENSAJE', defaultValue: '', description: 'Mensaje recibido desde el pipeline principal')
+    }
+    stages {
+        // Etapa para mostrar el mensaje recibido
+        stage('Mostrar mensaje') {
+            steps {
+                // Muestra el valor del parámetro 'MENSAJE'
+                echo "Mensaje recibido: ${params.MENSAJE}"
+            }
+        }
+    }
+}
